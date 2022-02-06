@@ -29,6 +29,8 @@ And retrieve the admin secret using
 [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String((kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}")))
 ```
 
+The Web UI is now available under [https://localhost/argo-cd](https://localhost/argo-cd)
+
 TODO:
 - Add a declarative admin secret
 - Add GitHub Secrets, Keys, etc..
