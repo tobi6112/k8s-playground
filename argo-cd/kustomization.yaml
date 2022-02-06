@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - base/argocd-namespace.yaml
+  - base/argocd-cm.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.2.5/manifests/install.yaml
+  - base/argocd-ingress.yaml
+
+patchesStrategicMerge:
+  - overlays/argo-cd-server-deployment.yaml
+  - overlays/argocd-cm-configmap.yaml
+  - overlays/argocd-ssh-known-hosts-cm.yaml # Fix for argo issue
+
+
+namespace: argocd
